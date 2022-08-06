@@ -1,3 +1,16 @@
+@import "bootstrap/dist/css/bootstrap.css";
+@import url(https://fonts.googleapis.com/css?family=Inter);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+
+body {
+  font-family: 'Inter';
+}
+
+.brandLogo{
+ font-family: 'Pacifico';
+ font-size: large;
+}
+
 .App {
   text-align: center;
 }
@@ -36,4 +49,168 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+.header-main {
+  position: relative;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.offcanvas {
+  position: fixed;
+  bottom: 0;
+  z-index: 1045;
+  display: flex;
+  flex-direction: column;
+  max-width: 86%;
+  visibility: hidden;
+  background-color: #fff;
+  /* background-clip: padding-box; */
+  outline: 0;
+  transition: transform .3s ease-in-out;
+}
+
+.offcanvas-end {
+  top: 0;
+  right: 0;
+  width: 400px;
+  border-left: 1pxsolidrgba(0,0,0,.2);
+  transform: translateX(100%);
+}
+
+.offcanvas.show {
+  transform: none;
+}
+
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+}
+
+.offcanvas-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.offcanvas-backdrop.show {
+  opacity: .5;
+}
+
+.offcanvas-backdrop {
+  opacity: 0;
+}
+
+.offcanvas-body {
+  flex-grow: 1;
+  padding: 1rem 1rem;
+  overflow-y: auto;
+}
+
+.itemside {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.itemside .aside {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.itemside .info {
+  padding-left: .75rem;
+  flex-grow: 1;
+  text-align: start;
+}
+
+.card.card-product-grid {
+  box-shadow: 0 1px 2px rgb(51 51 51 / 7%);
+  height: 520px;
+              -webkit-animation-duration: 100s;
+            animation-duration: 100s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+}
+
+.card-product-grid .info-wrap {
+  padding: 1rem 1.2rem;
+  overflow: hidden;
+}
+
+.product-title{
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
+}
+
+.price-wrap .price {
+  font-size: 18px;
+  color: #f00;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.price-wrap .discount {
+  color: #777;
+  font-size: 13px;
+  position: relative;
+}
+
+.price-wrap .discount-per {
+  color: #777;
+  font-size: 13px;
+  position: relative;
+}
+
+.boxprice .discount:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 45%;
+  right: 0;
+  border-top: 1px solid;
+  border-color: inherit;
+  -webkit-transform: skewY(-10deg);
+  -moz-transform: skewY(-10deg);
+  transform: skewY(-10deg);
+}
+
+.card:hover{ 
+  box-shadow: 1px 8px 20px grey;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+     opacity: 0;
+     -webkit-transform: translateY(-20px);
+  }
+  100% {
+     opacity: 1;
+     -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+     opacity: 0;
+     transform: translateY(-20px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateY(0);
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
 }
