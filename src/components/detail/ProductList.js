@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Redirect, useHistory, withRouter } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
@@ -13,6 +13,7 @@ class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = { checkInital: true, checkGenerateProduct: true };
+    this.redirectHandler = this.redirectHandler.bind(this)
   }
 
   componentDidMount() {
@@ -48,6 +49,10 @@ class ProductList extends React.Component {
     console.log(`You Clicked: handdleAddWishList()`);
   }
 
+  redirectHandler = () => {
+    this.props.history.push('/product')
+  }
+
   render() {
     const { getProduct, resetGetProduct, production_list } = this.props;
 
@@ -65,7 +70,7 @@ class ProductList extends React.Component {
             production_list.result_list.map((item, idx) => {
               return (
                 <div className="col-lg-3 col-md-6 col-sm-6" key={idx}>
-                  <figure className="card card-product-grid">
+                  <figure className="card card-product-grid" onClick={() => this.redirectHandler()}>
                     <div className="img-wrap">
                       <img src={item.product_pic} width={240}></img>
                     </div>
@@ -146,7 +151,7 @@ const mapDispatchToProps = (dispatch) => {
     appendProduct: (data, quantity) => {
       dispatch(appendProduct(data, quantity));
     },
-    addWishList: (id) =>{
+    addWishList: (id) => {
       dispatch(addWishList(id))
     }
   };
@@ -155,8 +160,6 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => ({
   production_list: state.production_list,
   shoping_cart: state.shoping_cart,
-  //   total_count: state.total_count,
-  //   result_list: state.result_list,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

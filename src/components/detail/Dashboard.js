@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
     return (
       <div>
         <MenuBar/>
-        <ProductList />
+        <ProductList history={this.props.history}/>
       </div>
     );
   }

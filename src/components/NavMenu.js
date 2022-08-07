@@ -59,7 +59,7 @@ class Navmenu extends React.Component {
   }
 
   render() {
-
+    console.log(this.props.wish_list.result_list)
     return (
       <div>
         <Navbar sticky="top" className="shadow-sm p-3 mb-5 bg-white rounded">
@@ -88,7 +88,7 @@ class Navmenu extends React.Component {
                   <FaUser /> Sign In
                 </Button>
                 <Button variant="outline-secondary mx-1" onClick={() => this.handleOpenWishList()}>
-                  <FaHeart /> Wishlist ({this.props.wish_list.responseWishList.length  == undefined || this.props.wish_list.responseWishList.length  == 0 ? 0 : this.props.wish_list.responseWishList.length })
+                  <FaHeart /> Wishlist ({(this.props.wish_list.responseWishList == undefined || this.props.wish_list.responseWishList.length == 0) ? 0 : this.props.wish_list.responseWishList.length })
                 </Button>
                 <Button
                   variant="outline-secondary mx-1"

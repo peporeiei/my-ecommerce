@@ -39,7 +39,6 @@ class WishListPage extends React.Component {
     }
 
     render() {
-        console.log(this.props.wish_list)
         return (
             <div>
                 <Container fluid>
@@ -48,7 +47,7 @@ class WishListPage extends React.Component {
                             <h3>Wish List</h3>
                         </Col>
                     </Row>
-                    {this.props.wish_list != undefined && this.props.wish_list.responseWishList.length == 0 && !this.state.initialRender &&
+                    {(this.props.wish_list.responseWishList == undefined || this.props.wish_list.responseWishList.length == 0) && !this.state.initialRender &&
                         <Row className="mt-3">
                             <Col>
                                 <div className="card mb-3">
