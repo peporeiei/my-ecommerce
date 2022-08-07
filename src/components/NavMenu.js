@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import {
   Container,
@@ -9,6 +9,7 @@ import {
   Col,
   Form,
   Button,
+  Modal
 } from "react-bootstrap";
 import {
   FaStoreAlt,
@@ -17,10 +18,11 @@ import {
   FaShoppingCart,
   FaSearch,
 } from "react-icons/fa";
-
+import { connect } from "react-redux";
 import ShoppingCart from "./detail/ShoppingCart";
 // const logo = require('../../public/medical-lab.png')
 import logo from "./medical-lab.png";
+import WishListPage from "./detail/WishList"
 
 class Navmenu extends React.Component {
   constructor(props) {
@@ -28,6 +30,7 @@ class Navmenu extends React.Component {
 
     this.state = {
       openWishCart: false,
+      openWishList: false
     };
   }
 
@@ -43,12 +46,25 @@ class Navmenu extends React.Component {
     }
   };
 
+  handleOpenWishList = () => {
+    if (this.state.openWishList) {
+      this.setState({
+        openWishList: false
+      })
+    } else {
+      this.setState({
+        openWishList: true
+      })
+    }
+  }
+
   render() {
+
     return (
       <div>
         <Navbar sticky="top" className="shadow-sm p-3 mb-5 bg-white rounded">
           <Container fluid>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/main">
               <span className="brandLogo">
                 <img src={logo} width={40} alt="piture" /> ECOMMERCE
               </span>
@@ -71,14 +87,14 @@ class Navmenu extends React.Component {
                 <Button variant="outline-secondary" href="/login">
                   <FaUser /> Sign In
                 </Button>
-                <Button variant="outline-secondary mx-1">
-                  <FaHeart /> Wishlist
+                <Button variant="outline-secondary mx-1" onClick={() => this.handleOpenWishList()}>
+                  <FaHeart /> Wishlist ({this.props.wish_list.responseWishList.length  == undefined || this.props.wish_list.responseWishList.length  == 0 ? 0 : this.props.wish_list.responseWishList.length })
                 </Button>
                 <Button
                   variant="outline-secondary mx-1"
                   onClick={() => this.handleOpenCart()}
                 >
-                  <FaShoppingCart /> Shoping Cart
+                  <FaShoppingCart /> Shoping Cart ({this.props.shoping_cart.responseCart.result_list.length == undefined || this.props.shoping_cart.responseCart.result_list.length == 0 ? 0 : this.props.shoping_cart.responseCart.result_list.length})
                 </Button>
               </div>
             </Navbar.Collapse>
@@ -89,9 +105,19 @@ class Navmenu extends React.Component {
           openWishCart={this.state.openWishCart}
           parentHandleOpenCart={this.handleOpenCart}
         />
+
+        <Modal show={this.state.openWishList} onHide={() => this.handleOpenWishList()} size="xl">
+          <Modal.Body>
+            <WishListPage />
+          </Modal.Body>
+        </Modal>
       </div>
     );
   }
 }
+const mapStateToProps = (state) => ({
+  shoping_cart: state.shoping_cart,
+  wish_list: state.wish_list
+});
 
-export default Navmenu;
+export default connect(mapStateToProps)(Navmenu);

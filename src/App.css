@@ -9,11 +9,16 @@ body {
 .brandLogo{
  font-family: 'Pacifico';
  font-size: large;
+ color: #0066ff;
 }
 
-.App {
-  text-align: center;
+.bg-blue{
+  background-color: #a9def9;
 }
+
+/* .App {
+  text-align: center;
+} */
 
 .App-logo {
   height: 40vmin;
@@ -142,11 +147,12 @@ body {
 
 .product-title{
   display: -webkit-box;
-  max-width: 200px;
+  max-width: auto;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-align: left;
+  font-size: 12px;
 }
 
 .price-wrap .price {
@@ -213,4 +219,13 @@ body {
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
+}
+
+.img-wrap{
+  height: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }

@@ -6,6 +6,7 @@ import NavMenu from "./NavMenu"
 import { Counter } from "../features/counter/Counter";
 import Login from "./auth/Login";
 import Dashboard from "./detail/Dashboard"
+import WishListPage from "./detail/WishList";
 
 class Layout extends React.Component {
     constructor(props) {
@@ -38,6 +39,7 @@ const DefaultContainer = () => (
     <Container fluid>
       <NavMenu />
       <Route path="/main" component={Dashboard} />
+      <Route path="/wish" component={WishListPage} />
     </Container>
   </div>
 );
