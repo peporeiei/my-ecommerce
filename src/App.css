@@ -4,6 +4,7 @@
 
 body {
   font-family: 'Inter';
+  background-color: #f8f9fa ;
 }
 
 .brandLogo{
@@ -247,4 +248,14 @@ body {
   border-radius: .35rem;
   max-width: 100%;
   height: auto;
+}
+
+.text-divider {
+  text-align: center;
+  display: flex;
+  font-size: .875rem;
+  color: #9da1a7;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

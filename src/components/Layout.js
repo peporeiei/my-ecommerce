@@ -1,17 +1,14 @@
-import * as React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import React from "react";
+import {Route, Routes } from "react-router-dom";
 // import { Route, Switch } from 'react-router';
 import { Container, Nav, Navbar, NavDropdown, Row, Col } from "react-bootstrap";
-
-import SubLayout from "./SubLayout";
-import { PrivateRoute } from "./PrivateRoute";
-import { Counter } from "../features/counter/Counter";
 
 import NavMenu from "./NavMenu";
 import Login from "./auth/Login";
 import Dashboard from "./detail/Dashboard"
 import WishListPage from "./detail/WishList";
 import ProductDetail from "./detail/ProductDetail";
+import ProductList from "./detail/ProductList";
 
 class Layout extends React.Component {
   constructor(props) {
@@ -19,36 +16,35 @@ class Layout extends React.Component {
   }
 
   render() {
+    console.log(this.props.location)
     return (
-      <BrowserRouter>
-        <Switch>
-          <div className="App">
-            <Route exact path="/(login)" component={LoginContainer} />
-            <Route component={DefaultContainer} />
-          </div>
-        </Switch>
-      </BrowserRouter>
+      <React.Fragment>
+        {/* {window.location.pathname !== '/login' && <NavMenu />} */}
+        <NavMenu />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="login" element={<Login />} />
+            <Route path="main" element={<Dashboard />} />
+            <Route path="wish" element={<WishListPage />} />
+            <Route path="product" component={<ProductDetail />} />
+          </Routes>
+      </React.Fragment>
     );
   }
 }
 
-const LoginContainer = () => (
-  <Container fluid>
-    <Route exact path="/" render={() => <Redirect to="/login" />} />
-    <Route path="/login" component={Login} />
-  </Container>
-);
+// const LoginContainer = () => (
+//   <Container fluid>
+//     <Route exact path="/" render={() => <Redirect to="/login" />} />
 
-const DefaultContainer = () => (
-  <div>
-    <Container fluid>
-      <NavMenu />
-      <Route path="/main" component={Dashboard} />
-      <Route path="/wish" component={WishListPage} />
-      <Route path="/product" component={ProductDetail} />
-    </Container>
-  </div>
-);
+//   </Container>
+// );
+
+// const DefaultContainer = () => (
+//   <Container fluid>
+//     {/* <NavMenu /> */}
+//   </Container>
+// );
 
 export default Layout;
 

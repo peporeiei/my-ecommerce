@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { location } from "react-router-dom";
 import {
   Container,
   Nav,
@@ -32,6 +32,7 @@ class Navmenu extends React.Component {
       openWishCart: false,
       openWishList: false
     };
+
   }
 
   handleOpenCart = () => {
@@ -58,8 +59,11 @@ class Navmenu extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    console.log("componentWillUnmount!")
+  }
+
   render() {
-    console.log(this.props.wish_list.result_list)
     return (
       <div>
         <Navbar sticky="top" className="shadow-sm p-3 mb-5 bg-white rounded">
@@ -70,34 +74,36 @@ class Navmenu extends React.Component {
               </span>
             </Navbar.Brand>
             <Navbar.Toggle />
-            <Navbar.Collapse className="justify-content-end">
-              <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                  size="md"
-                />
-                <Button variant="primary">
-                  <FaSearch />
-                </Button>
-              </Form>
-              <div className="d-flex mx-4">
-                <Button variant="outline-secondary" href="/login">
-                  <FaUser /> Sign In
-                </Button>
-                <Button variant="outline-secondary mx-1" onClick={() => this.handleOpenWishList()}>
-                  <FaHeart /> Wishlist ({(this.props.wish_list.responseWishList == undefined || this.props.wish_list.responseWishList.length == 0) ? 0 : this.props.wish_list.responseWishList.length })
-                </Button>
-                <Button
-                  variant="outline-secondary mx-1"
-                  onClick={() => this.handleOpenCart()}
-                >
-                  <FaShoppingCart /> Shoping Cart ({this.props.shoping_cart.responseCart.result_list.length == undefined || this.props.shoping_cart.responseCart.result_list.length == 0 ? 0 : this.props.shoping_cart.responseCart.result_list.length})
-                </Button>
-              </div>
-            </Navbar.Collapse>
+            {window.location.pathname !== '/login' &&
+              <Navbar.Collapse className="justify-content-end">
+                <Form className="d-flex">
+                  <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    className="me-2"
+                    aria-label="Search"
+                    size="md"
+                  />
+                  <Button variant="primary">
+                    <FaSearch />
+                  </Button>
+                </Form>
+                <div className="d-flex mx-4">
+                  <Button variant="outline-secondary" href="/login">
+                    <FaUser /> Sign In
+                  </Button>
+                  <Button variant="outline-secondary mx-1" onClick={() => this.handleOpenWishList()}>
+                    <FaHeart /> Wishlist ({(this.props.wish_list.responseWishList == undefined || this.props.wish_list.responseWishList.length == 0) ? 0 : this.props.wish_list.responseWishList.length})
+                  </Button>
+                  <Button
+                    variant="outline-secondary mx-1"
+                    onClick={() => this.handleOpenCart()}
+                  >
+                    <FaShoppingCart /> Shoping Cart ({this.props.shoping_cart.responseCart.result_list.length == undefined || this.props.shoping_cart.responseCart.result_list.length == 0 ? 0 : this.props.shoping_cart.responseCart.result_list.length})
+                  </Button>
+                </div>
+              </Navbar.Collapse>
+            }
           </Container>
         </Navbar>
 

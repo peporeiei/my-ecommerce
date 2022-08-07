@@ -20,13 +20,17 @@ class Dashboard extends React.Component {
     this.state = {};
   }
 
+  redirectHandler = () => {
+    this.props.history.push('/product')
+  }
+
   render() {
     return (
       <div>
         <MenuBar/>
-        <ProductList history={this.props.history}/>
+        <ProductList history={this.props.history} redirectHandler={this.redirectHandler.bind(this)}/>
       </div>
     );
   }
 }
-export default Dashboard;
+export default(Dashboard);

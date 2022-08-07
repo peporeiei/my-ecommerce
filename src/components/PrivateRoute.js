@@ -13,6 +13,6 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
         localStorage.getItem('MY_ECOMMERCE')
             ? <Component {...props} />
-            : window.open('google.com', '_self')
+            : window.open('www.google.com', '_self')
     )} />
 )

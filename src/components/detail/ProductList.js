@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Redirect, useHistory, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
@@ -50,7 +50,8 @@ class ProductList extends React.Component {
   }
 
   redirectHandler = () => {
-    this.props.history.push('/product')
+    // this.props.redirectHandler()
+    this.props.history.push("/product");
   }
 
   render() {
@@ -70,60 +71,62 @@ class ProductList extends React.Component {
             production_list.result_list.map((item, idx) => {
               return (
                 <div className="col-lg-3 col-md-6 col-sm-6" key={idx}>
-                  <figure className="card card-product-grid" onClick={() => this.redirectHandler()}>
-                    <div className="img-wrap">
-                      <img src={item.product_pic} width={240}></img>
-                    </div>
-                    <figcaption className="info-wrap border-top justify-content-end">
-                      <p className="title mb-2 font-weight-bold">
-                        {item.product_name}
-                      </p>
-                      <span className="product-title text-muted mb-2">
-                        {item.product_detail}
-                      </span>
-                      <hr />
-                      <Row>
-                        <Col>
-                          <div className="d-flex">
-                            <Button
-                              variant="primary"
-                              size="md"
-                              onClick={() => this.handdleAddToCart(item, 1)}
-                            >
-                              <FaShoppingCart />
-                            </Button>
-                            <Button
-                              variant="outline-danger"
-                              className="mx-1"
-                              size="md"
-                              onClick={() => this.handdleAddWishList(item.product_id)}
-                            >
-                              <FaHeart />
-                            </Button>
-                          </div>
-                        </Col>
-                        <Col>
-                          <div className="price-wrap">
-                            <span className="price">
-                              {item.product_discount != ""
-                                ? numberToBath(item.product_discount)
-                                : numberToBath(item.product_price)}{" "}
-                            </span>
-                            {item.product_discount != "" && (
-                              <p className="boxprice text-muted">
-                                <span className="discount">
-                                  {numberToBath(item.product_price)}-
-                                </span>
-                                <span className="discount-per">
-                                  -{item.product_percent}%
-                                </span>
-                              </p>
-                            )}
-                          </div>
-                        </Col>
-                      </Row>
-                    </figcaption>
-                  </figure>
+                  {/* <Link to="/product"> */}
+                    <figure className="card card-product-grid">
+                      <div className="img-wrap">
+                        <img src={item.product_pic} width={240}></img>
+                      </div>
+                      <figcaption className="info-wrap border-top justify-content-end">
+                        <p className="title mb-2 font-weight-bold">
+                          {item.product_name}
+                        </p>
+                        <span className="product-title text-muted mb-2">
+                          {item.product_detail}
+                        </span>
+                        <hr />
+                        <Row>
+                          <Col>
+                            <div className="d-flex">
+                              <Button
+                                variant="primary"
+                                size="md"
+                                onClick={() => this.handdleAddToCart(item, 1)}
+                              >
+                                <FaShoppingCart />
+                              </Button>
+                              <Button
+                                variant="outline-danger"
+                                className="mx-1"
+                                size="md"
+                                onClick={() => this.handdleAddWishList(item.product_id)}
+                              >
+                                <FaHeart />
+                              </Button>
+                            </div>
+                          </Col>
+                          <Col>
+                            <div className="price-wrap">
+                              <span className="price">
+                                {item.product_discount != ""
+                                  ? numberToBath(item.product_discount)
+                                  : numberToBath(item.product_price)}{" "}
+                              </span>
+                              {item.product_discount != "" && (
+                                <p className="boxprice text-muted">
+                                  <span className="discount">
+                                    {numberToBath(item.product_price)}-
+                                  </span>
+                                  <span className="discount-per">
+                                    -{item.product_percent}%
+                                  </span>
+                                </p>
+                              )}
+                            </div>
+                          </Col>
+                        </Row>
+                      </figcaption>
+                    </figure>
+                  {/* </Link> */}
                 </div>
               );
             })}

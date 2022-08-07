@@ -24,6 +24,7 @@ import {
 const persistConfig = {
   key: 'production_list',
   key: 'shoping_cart',
+  key: 'wish_list',
   storage,
 };
 const reducers = combineReducers({

@@ -6,6 +6,7 @@ import App from './App';
 import { ConnectedRouter } from 'connected-react-router';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserHistory } from 'history';
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
 
 import { persistStore } from 'redux-persist';
@@ -26,11 +27,11 @@ console.log("history :", history)
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <ConnectedRouter history={history}> */}
       <PersistGate persistor={persistor}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </PersistGate>
-      {/* </ConnectedRouter> */}
     </Provider>
   </React.StrictMode>
 );
