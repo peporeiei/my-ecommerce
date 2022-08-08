@@ -9,6 +9,7 @@ import Dashboard from "./detail/Dashboard"
 import WishListPage from "./detail/WishList";
 import ProductDetail from "./detail/ProductDetail";
 import ProductList from "./detail/ProductList";
+import Register from "./auth/Register";
 
 class Layout extends React.Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class Layout extends React.Component {
             <Route path="login" element={<Login />} />
             <Route path="main" element={<Dashboard />} />
             <Route path="wish" element={<WishListPage />} />
-            <Route path="product" component={<ProductDetail />} />
+            <Route path="product" element={<ProductDetail />} />
+            <Route path="register" element={<Register />} />
           </Routes>
       </React.Fragment>
     );

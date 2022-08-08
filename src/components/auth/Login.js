@@ -34,7 +34,7 @@ class Login extends React.Component {
                       <a class="btn w-100 btn-primary" type="button" href="/main"> Sign in </a>
                     {/* </Link> */}
                   </div>
-                  <p class="mb-1 text-center">Don’t have an account? Sign Up</p>
+                  <p class="mb-1 text-center">Don’t have an account? <Link to="/register">Sign Up</Link></p>
                 </form>
               </Card.Body>
             </Card>

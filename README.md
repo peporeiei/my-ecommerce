@@ -1,46 +1,76 @@
-# Getting Started with Create React App and Redux
+﻿# EatLab Test : ECommerce Web React JS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+#  Feature
 
-## Available Scripts
+- Generate product card using data in redux.
+- Add and Remove product in shopping cart and calculate product price in shopping cart.
+- Add and Remove product in wish list , It will store the wish list in local storage. It won't disappear until you remove it.
+- There is a login and register page. but still not working because redux is not connected yet.
 
-In the project directory, you can run:
+## Tool
+- React JS
+- Redux , redux-persist
+- bootstrap 4
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ - Clone the repo in your terminal by clicking the  _green_  clone or download button at the top right and copy in 	the URL
+ - In your terminal, type `git clone URL`
+	  -   replace URL with the URL you copied
+		- enter
+-  This will copy all the files from this repo down to your computer
+-   In your terminal, cd into the directory you just created
+-   Type  `npm install`  to install all dependencies
+-   Set local storage to use wish list feature
+	- paste URL in your browser `http://localhost:3000/`
+	- Please `F12 >> Console` paste code  `localStorage.setItem('Ecommerce_wishList' , '001|003|004')` in console. Please enter.
+-    Last, but not least, type  `npm start`  to run the app locally.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Folder Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+$ my_app
+.
+├── node_modules
+├── public
+├── src
+│   ├── app
+|		├── store.js
+│   ├── component
+|		├── auth
+|			├── Login.js
+|			├── Register.js
+|		├── detail
+|			├── Dashboard.js
+|			├── ProductDetail.js
+|			├── ProductList.js
+|			├── ShoppingCart.js
+|			├── WishList.js
+|		├── Common.js
+|		├── Layout.js
+|		├── MenuBar.js
+|		├── NavMenu.js
+|		├── PrivateRoute.js
+|		├── SubLayout.js
+│   └── reducer
+|		├── ProductReducer.js
+|		├── ShopingCartReducer.js
+|		├── WishListReducer.js
+│   └── store
+|		├── ProductContainer.js
+|		├── ShopingContainer.js
+|		├── WishListContainer.js
+│   └── App.css
+│   └── App.js
+│   └── App.test.js
+│   └── index.css
+│   └── index.js
+│   └── .gitignore
+│   └── package-lock.json
+│   └── package.json
+├── file_in_root.ext
+└── README.md
+``
+```
+thanks for the opportunity Hope to be considered. Thank you.

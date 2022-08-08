@@ -29,13 +29,13 @@ class MenuBar extends React.Component {
                             <Navbar.Toggle />
                             <Navbar.Collapse className="justify-content-start">
                                 <Nav>
-                                    <Nav.Link href="#action1">Product</Nav.Link>
-                                    <NavDropdown title="Link" id="navbarScrollingDropdown">
+                                    <Nav.Link href="#action1">Home</Nav.Link>
+                                    <NavDropdown title="Product" id="navbarScrollingDropdown">
                                         <NavDropdown.Item href="#action3">
-                                            Action
+                                            All Product
                                         </NavDropdown.Item>
                                         <NavDropdown.Item href="#action4">
-                                            Another action
+                                            Pre Order
                                         </NavDropdown.Item>
                                     </NavDropdown>
                                     <Nav.Link href="#action1">PC specs</Nav.Link>

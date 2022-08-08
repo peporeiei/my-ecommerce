@@ -46,6 +46,7 @@ class ProductDetail extends React.Component {
                             <h4 className="title text-dark"></h4>
                         </Col>
                     </Row>
+                    <Row><h1>Hello</h1></Row>
                 </Container>
             </div>
         );
