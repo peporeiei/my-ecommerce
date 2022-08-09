@@ -5,15 +5,20 @@ export const CLEARWISHLIST = "CLEARWISHLIST"
 export const INITIALSTATE = "INITIALSTATE"
 
 export const getWishList = () => (dispatch, getState) => {
-    const wishList = localStorage.getItem("Ecommerce_wishList").split("|")
+    const wishList = []
+    if(localStorage.getItem("Ecommerce_wishList" != null)){
+        wishList = localStorage.getItem("Ecommerce_wishList").split("|")
+    }
     const productionList = getState().production_list.result_list
     const dataArr = []
-    for (var i = 0; i < wishList.length; i++) {
-        productionList.filter(item => {
-            if (parseInt(item.product_id) === parseInt(wishList[i])) {
-                dataArr.push(item)
-            }
-        });
+    if (wishList.length != 0) {
+        for (var i = 0; i < wishList.length; i++) {
+            productionList.filter(item => {
+                if (parseInt(item.product_id) === parseInt(wishList[i])) {
+                    dataArr.push(item)
+                }
+            });
+        }
     }
     console.log("dispatch : GETWISHLIST");
     console.log(dataArr)
